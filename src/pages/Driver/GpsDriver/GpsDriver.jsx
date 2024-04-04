@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 
-export function Driver() {
+export function GpsDriver() {
+  const [ baseApiSocket, setBaseApiSocket ] = useState(import.meta.env.VITE_BASE_SOCKET)
   const { career } = useParams()
-  const chatSocket = new WebSocket(`ws://localhost:8000/ws/chat/${career}/`);
+  const chatSocket = new WebSocket(`${baseApiSocket}/ws/chat/${career}/`);
   
   const capturarUbicacion = () => {
     return new Promise((resolve, reject) => {

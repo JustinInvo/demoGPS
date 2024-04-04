@@ -26,7 +26,7 @@ export function Login() {
         console.log('response-->', response)
         const { access } = response;
         const { is_staff } = await login(access)
-        navigate(is_staff ? 'admin' : 'driver')
+        navigate(is_staff ? 'admin/tables' : 'driver/tables')
       } catch(error) {
         console.log(error)
       }

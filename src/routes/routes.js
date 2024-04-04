@@ -1,24 +1,26 @@
-import { AdminLayout, DriverLayout, DefaultLayout } from "../layouts/index"
-import { Admin, Driver, Login } from "../pages"
+import { DefaultLayout } from "../layouts/index"
+import { Login } from "../pages"
+import routesAdmin from "./routes.admin"
+import routesClient from "./routes.driver"
+// import {Error404} from "../pages"
+// import {BasicLayout} from "../layouts"
 
-const routesClient = [
+// const routes = [ ...routesAdmin, ...routesClient, 
+//   {
+//     path: "*",
+//     layout: BasicLayout,
+//     component: Error404,
+//   },
+// ]
+const routes = [
   {
     path: "/",
     layout: DefaultLayout,
     component: Login,
     exact: true,
   },
-  {
-    path: "/admin/",
-    layout: AdminLayout,
-    component: Admin,
-    exact: true,
-  },
-  {
-    path: "/driver/",
-    layout: DriverLayout,
-    component: Driver,
-    exact: true,
-  }
-];
-export default routesClient
+  ...routesAdmin, 
+  ...routesClient]
+// [[{}] [{}]]
+// [{}, {}] para tenerlo asi sirven los '...'
+export default routes
